@@ -1,13 +1,27 @@
-<div class="container mx-auto p-4">
-  <h2 class="text-2xl font-bold mb-4 text-center">Track List</h2>
-  <ul class="space-y-4">
-    <li *ngFor="let track of tracks$ | async" class="bg-white p-4 rounded-lg shadow-md">
-      <h3 class="text-xl font-semibold">{{ track.songName }} - {{ track.artistName }}</h3>
-      <p class="text-gray-600">{{ track.description }}</p>
-      <p class="text-gray-600">Category: {{ track.category }}</p>
-      <p class="text-gray-600">Date Added: {{ track.dateAdded | date }}</p>
-      <p class="text-gray-600">Duration: {{ track.duration }} seconds</p>
-      <button (click)="onDeleteTrack(track.id)" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
-    </li>
-  </ul>
+<div class="min-h-screen  p-6">
+  <div class="max-w-7xl mx-auto">
+    <!-- Tracks Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div *ngFor="let track of tracks$ | async" 
+           class="group relative cursor-pointer">
+        <div class="bg-[#181818] rounded-lg p-4 hover:bg-[#282828] transition-all duration-300">
+          <div class="relative">
+            <div class="aspect-square mb-4 rounded-md overflow-hidden bg-[#282828]">
+              <img src="https://sonos-partner-documentation.s3.amazonaws.com/ReadMe-External/content-service-features/add-images/add-album-art/SonosApp-DefaultArt-Alone.png" alt="Track cover" 
+                   class="w-full h-full object-cover">
+            </div>
+            <button class="absolute bottom-2 right-2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center 
+                         shadow-xl opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+              <i class="fas fa-play text-black text-xl"></i>
+            </button>
+          </div>
+          
+          <h3 class="text-white font-bold mb-2 truncate">{{track.songName}}</h3>
+          <p class="text-gray-400 text-sm line-clamp-2">
+            {{track.artistName}} • {{track.category}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

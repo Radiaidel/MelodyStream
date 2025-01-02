@@ -11,6 +11,7 @@ export interface Track {
   audioFile: File;
   dateAdded: Date;
   duration: number;
+  
 }
 
 interface TrackDB extends DBSchema {
